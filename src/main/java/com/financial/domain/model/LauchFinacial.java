@@ -14,6 +14,7 @@ import javax.persistence.Id;
 
 import org.hibernate.annotations.CreationTimestamp;
 import org.hibernate.annotations.UpdateTimestamp;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import com.financial.domain.enums.InputType;
 
@@ -35,11 +36,11 @@ public class LauchFinacial implements Serializable{
 	@Enumerated(EnumType.STRING)
 	private InputType inputType;
 	
-	@CreationTimestamp
+	@CreationTimestamp  @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	@Column(nullable = false, columnDefinition = "datetime")
 	private LocalDateTime createAt;
 	
-	@UpdateTimestamp
+	@UpdateTimestamp  @DateTimeFormat(pattern = "dd/MM/yyyy HH:mm")
 	@Column(nullable = false, columnDefinition = "datetime")
 	private LocalDateTime updateAt;
 }
