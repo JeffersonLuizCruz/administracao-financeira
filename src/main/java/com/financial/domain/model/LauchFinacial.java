@@ -32,7 +32,7 @@ public class LauchFinacial implements Serializable{
 	
 	private String name;
 	private String description;
-	private BigDecimal input;
+	private BigDecimal lauch;
 	@Enumerated(EnumType.STRING)
 	private InputType inputType;
 	
