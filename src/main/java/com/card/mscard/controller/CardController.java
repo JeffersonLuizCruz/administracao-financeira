@@ -13,13 +13,16 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.card.mscard.entity.Card;
+import com.card.mscard.entity.CustomerCard;
 import com.card.mscard.service.CardService;
+import com.card.mscard.service.CustomerCardService;
 
 @RestController
 @RequestMapping("/cards")
 public class CardController {
 
 	@Autowired private CardService cardService;
+	@Autowired private CustomerCardService customerCardService;
 	
 	@PostMapping
 	public ResponseEntity<Card> save(@RequestBody Card card){
@@ -31,6 +34,10 @@ public class CardController {
 		return ResponseEntity.status(HttpStatus.OK).body(cardService.findByIncome(renda));
 	}
 	
+	@GetMapping(params = "cpf")
+	public ResponseEntity<List<CustomerCard>> findByCpf(@RequestParam("cpf") String cpf){
+		return ResponseEntity.status(HttpStatus.OK).body(customerCardService.findByCpf(cpf));
+	}
 	@GetMapping
 	public String status() {
 		return "Hello World";
