@@ -1,13 +1,13 @@
-package com.financial;
+package com.card.mscard;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 @SpringBootApplication
-public class FinancialManagementApplication {
+public class MsCardApplication {
 
 	public static void main(String[] args) {
-		SpringApplication.run(FinancialManagementApplication.class, args);
+		SpringApplication.run(MsCardApplication.class, args);
 	}
 
 }

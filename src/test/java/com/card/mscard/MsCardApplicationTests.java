@@ -1,10 +1,10 @@
-package com.financial;
+package com.card.mscard;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 
 @SpringBootTest
-class FinancialManagementApplicationTests {
+class MsCardApplicationTests {
 
 	@Test
 	void contextLoads() {
