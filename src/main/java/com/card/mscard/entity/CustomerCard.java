@@ -30,5 +30,5 @@ public class CustomerCard implements Serializable{
 	@ManyToOne
 	@JoinColumn(name = "id_card")
 	private Card card;
-	private BigDecimal limit;
+	private BigDecimal basicLimit;
 }
