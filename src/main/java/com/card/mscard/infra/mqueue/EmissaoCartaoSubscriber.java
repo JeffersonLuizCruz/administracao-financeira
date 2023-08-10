@@ -26,21 +26,21 @@ public class EmissaoCartaoSubscriber {
 	@RabbitListener(queues = "${mq.queues.emissao-cartoes}")
 	public void receberSolicitacaoEmissao(@Payload String payload) {
 		
-		ObjectMapper mapper = new ObjectMapper();
-		
 		try {
-			
+			ObjectMapper mapper = new ObjectMapper();
 			DadosSolicitacaoEmissaoCartao dados = mapper.readValue(payload, DadosSolicitacaoEmissaoCartao.class);
 			
 			Card cardEntity = cardRepository.findById(dados.getIdCard()).get();
-			log.info("Result: {}", payload);
+			log.info("First - Card: {}", payload);
 			CustomerCard cc = new CustomerCard();
 			cc.setCpf(dados.getCpf());
 			cc.setCard(cardEntity);
 			cc.setBasicLimit(dados.getBasicLimit());
+			log.info("Sec - Card: {}", cc);
 			
-			ccRepository.save(cc);
-			
+			CustomerCard save = ccRepository.save(cc);
+			log.info("Trhree - Card: {}", save);
+			log.info("Afeter RabbitMQ save");
 		} catch (JsonMappingException e) {
 			e.printStackTrace();
 		} catch (JsonProcessingException e) {
