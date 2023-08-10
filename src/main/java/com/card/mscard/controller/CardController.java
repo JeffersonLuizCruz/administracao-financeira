@@ -13,7 +13,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.card.mscard.entity.Card;
-import com.card.mscard.entity.CustomerCard;
+import com.card.mscard.entity.CustomerCardResponse;
 import com.card.mscard.service.CardService;
 import com.card.mscard.service.CustomerCardService;
 
@@ -35,8 +35,8 @@ public class CardController {
 	}
 	
 	@GetMapping(params = "cpf")
-	public ResponseEntity<List<CustomerCard>> findByCpf(@RequestParam("cpf") String cpf){
-		return ResponseEntity.status(HttpStatus.OK).body(customerCardService.findByCpf(cpf));
+	public ResponseEntity<List<CustomerCardResponse>> findByCardCpf(@RequestParam("cpf") String cpf){
+		return ResponseEntity.status(HttpStatus.OK).body(customerCardService.findByCardCpf(cpf));
 	}
 	@GetMapping
 	public String status() {
