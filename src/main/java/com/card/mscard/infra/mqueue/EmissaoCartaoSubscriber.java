@@ -31,7 +31,7 @@ public class EmissaoCartaoSubscriber {
 			DadosSolicitacaoEmissaoCartao dados = mapper.readValue(payload, DadosSolicitacaoEmissaoCartao.class);
 			
 			Card cardEntity = cardRepository.findById(dados.getIdCard()).get();
-			log.info("First - Card: {}", payload);
+			log.info("Payload object - Card Consumer: {}", payload);
 			CustomerCard cc = new CustomerCard();
 			cc.setCpf(dados.getCpf());
 			cc.setCard(cardEntity);
@@ -39,8 +39,7 @@ public class EmissaoCartaoSubscriber {
 			log.info("Sec - Card: {}", cc);
 			
 			CustomerCard save = ccRepository.save(cc);
-			log.info("Trhree - Card: {}", save);
-			log.info("Afeter RabbitMQ save");
+			log.info("Afeter RabbitMQ save: {}", save);
 		} catch (JsonMappingException e) {
 			e.printStackTrace();
 		} catch (JsonProcessingException e) {
